@@ -10,17 +10,13 @@
         <relativePath>../spring-cloud-alibaba-study-dependencies/pom.xml</relativePath>
     </parent>
 
-    <artifactId>spring-cloud-alibaba-study-nacos-consumer</artifactId>
+    <artifactId>spring-cloud-study-gateway</artifactId>
     <packaging>jar</packaging>
 
-    <name>spring-cloud-alibaba-study-nacos-consumer</name>
+    <name>spring-cloud-study-gateway</name>
 
     <dependencies>
         <!-- Spring Boot Begin -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -39,12 +35,24 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
         <!-- Spring Cloud End -->
+
+        <!-- Commons Begin -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+        <!-- Commons Begin -->
     </dependencies>
+
 </project>
