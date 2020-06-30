@@ -4,13 +4,22 @@
 #### 服务注册与发现 nacos
 - 下载安装 windows
 ```shell script
+# 切换 tag 1.2.1
 git clone https://github.com/alibaba/nacos.git
 
-mvn -Prelease-nacos clean install -U
+# 编译 
+mvn -Prelease-nacos -Dmaven.test.skip=true clean install -U 
 ```
 
 - 启动
 ```shell script
+# linux  standalone表示单机模式运行，非集群模式
+sh startup.sh -m standalone
+
+# ubuntu
+bash startup.sh -m standalone
+
+# window
 点击startup.cmd
 ```
 
