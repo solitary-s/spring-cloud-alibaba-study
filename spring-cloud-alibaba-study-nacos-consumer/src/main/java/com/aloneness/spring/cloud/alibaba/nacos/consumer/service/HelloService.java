@@ -1,6 +1,6 @@
-package com.aloneness.spring.cloud.alibaba.study.nacos.consumer.service;
+package com.aloneness.spring.cloud.alibaba.nacos.consumer.service;
 
-import com.aloneness.spring.cloud.alibaba.study.nacos.consumer.service.fallback.HelloServiceFallback;
+import com.aloneness.spring.cloud.alibaba.nacos.consumer.service.fallback.HelloServiceFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -1,6 +1,6 @@
-package com.aloneness.spring.cloud.alibaba.study.nacos.consumer.service.fallback;
+package com.aloneness.spring.cloud.alibaba.nacos.consumer.service.fallback;
 
-import com.aloneness.spring.cloud.alibaba.study.nacos.consumer.service.HelloService;
+import com.aloneness.spring.cloud.alibaba.nacos.consumer.service.HelloService;
 import org.springframework.stereotype.Component;
 
 @Component
