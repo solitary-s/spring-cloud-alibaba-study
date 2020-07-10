@@ -19,7 +19,7 @@
         <!-- Well Begin -->
         <dependency>
             <groupId>com.aloneness</groupId>
-            <artifactId>well-starter-mybatis</artifactId>
+            <artifactId>well-starter-mybatis-plus</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
 

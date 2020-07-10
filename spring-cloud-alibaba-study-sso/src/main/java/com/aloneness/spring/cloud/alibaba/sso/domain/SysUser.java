@@ -1,6 +1,6 @@
 package com.aloneness.spring.cloud.alibaba.sso.domain;
 
-import com.aloneness.well.mybatis.domain.BaseEntity;
+import com.aloneness.well.mybatis.plus.domain.BaseEntity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
