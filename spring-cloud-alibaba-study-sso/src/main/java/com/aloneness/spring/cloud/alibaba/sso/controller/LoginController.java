@@ -7,6 +7,7 @@ import cn.hutool.json.JSONUtil;
 import com.aloneness.spring.cloud.alibaba.sso.domain.SysUser;
 import com.aloneness.spring.cloud.alibaba.sso.service.LoginService;
 import com.aloneness.spring.cloud.alibaba.sso.service.RedisService;
+import com.aloneness.spring.cloud.alibaba.sso.util.CookieUtil;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,6 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * 单点登录
- *
  */
 @Controller
 public class LoginController {
@@ -34,7 +34,10 @@ public class LoginController {
     public String login(@RequestParam(required = false) String url,
                         HttpServletRequest request,
                         Model model) {
-        String authorization = request.getHeader("Authorization");
+        String authorization = CookieUtil.getCookieValue(request, "Authorization");
+        if (StrUtil.isEmpty(authorization)) {
+            authorization = request.getHeader("Authorization");
+        }
 
         if (StrUtil.isEmpty(authorization)) {
             if (StrUtil.isNotEmpty(url)) {
@@ -85,20 +88,32 @@ public class LoginController {
                         @RequestParam(required = false) String url,
                         HttpServletRequest request,
                         HttpServletResponse response,
-                        RedirectAttributes redirectAttributes){
+                        RedirectAttributes redirectAttributes) {
         SysUser user = loginService.login(loginCode, password);
 
-        if(ObjectUtil.isNull(user)){
+        if (ObjectUtil.isNull(user)) {
             redirectAttributes.addFlashAttribute("message", "用户名或密码错误，请重新登录");
-        }
-
-        else {
+        } else {
             String token = IdUtil.simpleUUID();
+            CookieUtil.setCookie(request, response, "Authorization", token, 60 * 60 * 24);
             String result = redisService.put(token, loginCode, 60 * 60 * 24);
-            if(StringUtils.isNotEmpty(url)){
-                return "redirect:" + url;
+            if (StringUtils.isNotEmpty(url)) {
+                return "redirect:" + url + "?token=" + loginCode;
             }
         }
-        return "redirect:/login";
+        return "redirect:/login?token=" + loginCode;
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request,
+                         HttpServletResponse response,
+                         @RequestParam(required = false) String url,
+                         Model model) {
+        try {
+            CookieUtil.deleteCookie(request, response, "Authorization");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return login(url, request, model);
     }
 }
