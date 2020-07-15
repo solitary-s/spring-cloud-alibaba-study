@@ -64,7 +64,7 @@ public class LoginController {
 
         SysUser user = JSONUtil.toBean(userJsonStr, SysUser.class);
         if (StrUtil.isNotEmpty(url)) {
-            return "redirect:" + url;
+            return "redirect:" + url + "callback?token=" + authorization + "&model=code";
         }
 
         model.addAttribute("sysUser", user);
@@ -98,7 +98,7 @@ public class LoginController {
             CookieUtil.setCookie(request, response, "Authorization", token, 60 * 60 * 24);
             String result = redisService.put(token, loginCode, 60 * 60 * 24);
             if (StringUtils.isNotEmpty(url)) {
-                return "redirect:" + url + "?token=" + token;
+                return "redirect:" + url + "callback?token=" + token + "&model=code";
             }
         }
         return "redirect:/login?token=" + token;
