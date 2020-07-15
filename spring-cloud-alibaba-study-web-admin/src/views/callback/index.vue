@@ -11,8 +11,13 @@
         beforeRouteEnter(to, from, next) {
             const {token, model} = qs.parse(window.location.href.split('?')[1]);
             store.dispatch("login", token)
+            console.log(to)
+            next()
         },
         created() {
+        },
+        mounted() {
+            this.$router.push("/")
         }
     }
 </script>
