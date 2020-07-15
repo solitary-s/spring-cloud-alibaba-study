@@ -16,6 +16,7 @@ public class PermissionInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String authorization = CookieUtil.getCookieValue(request, "Authorization");
         if (StrUtil.isEmpty(authorization)) {
+            response.sendRedirect("/login");
             return false;
         }
         return true;
