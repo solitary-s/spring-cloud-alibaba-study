@@ -63,3 +63,5 @@ hs_err_pid*
 
 # rebel.xml
 rebel.xml
+
+package-lock.json
