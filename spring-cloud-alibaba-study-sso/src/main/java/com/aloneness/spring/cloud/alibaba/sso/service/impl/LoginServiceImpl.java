@@ -28,7 +28,12 @@ public class LoginServiceImpl implements LoginService {
         String json = redisService.get(loginCode);
 
         if (StrUtil.isNotEmpty(json)) {
-            return JSONUtil.toBean(json, SysUser.class);
+            SysUser user = JSONUtil.toBean(json, SysUser.class);
+            if (user.getPassword().equals(password)) {
+                return user;
+            } else {
+                return null;
+            }
         }
 
         SysUser user = userService.getOne(new QueryWrapper<SysUser>().eq("USER_CODE", loginCode));

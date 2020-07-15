@@ -68,19 +68,19 @@ public class LoginController {
         }
 
         model.addAttribute("sysUser", user);
-        return "index";
+        return "redirect:/";
     }
 
     /**
      * 表单登录
      *
-     * @param loginCode
-     * @param password
-     * @param url
-     * @param request
-     * @param response
-     * @param redirectAttributes
-     * @return
+     * @param loginCode loginCode
+     * @param password password
+     * @param url url
+     * @param request request
+     * @param response response
+     * @param redirectAttributes redirectAttributes
+     * @return String
      */
     @PostMapping("login")
     public String login(@RequestParam(required = true) String loginCode,
@@ -91,17 +91,17 @@ public class LoginController {
                         RedirectAttributes redirectAttributes) {
         SysUser user = loginService.login(loginCode, password);
 
+        String token = IdUtil.simpleUUID();
         if (ObjectUtil.isNull(user)) {
             redirectAttributes.addFlashAttribute("message", "用户名或密码错误，请重新登录");
         } else {
-            String token = IdUtil.simpleUUID();
             CookieUtil.setCookie(request, response, "Authorization", token, 60 * 60 * 24);
             String result = redisService.put(token, loginCode, 60 * 60 * 24);
             if (StringUtils.isNotEmpty(url)) {
-                return "redirect:" + url + "?token=" + loginCode;
+                return "redirect:" + url + "?token=" + token;
             }
         }
-        return "redirect:/login?token=" + loginCode;
+        return "redirect:/login?token=" + token;
     }
 
     @GetMapping("/logout")
