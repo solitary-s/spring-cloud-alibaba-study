@@ -10,10 +10,10 @@
         <relativePath>../spring-cloud-alibaba-study-dependencies/pom.xml</relativePath>
     </parent>
 
-    <artifactId>spring-cloud-study-gateway</artifactId>
+    <artifactId>spring-cloud-alibaba-study-gateway</artifactId>
     <packaging>jar</packaging>
 
-    <name>spring-cloud-study-gateway</name>
+    <name>spring-cloud-alibaba-study-gateway</name>
 
     <dependencies>
         <!-- Spring Boot Begin -->
