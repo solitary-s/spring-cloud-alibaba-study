@@ -14,8 +14,6 @@
             console.log(to)
             next()
         },
-        created() {
-        },
         mounted() {
             this.$router.push("/")
         }
