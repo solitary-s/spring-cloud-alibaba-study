@@ -24,4 +24,11 @@ public interface IRedisService {
      * @return
      */
     public Object get(String key);
+
+    /**
+     * 获取
+     *
+     * @return
+     */
+    public Object getAll();
 }

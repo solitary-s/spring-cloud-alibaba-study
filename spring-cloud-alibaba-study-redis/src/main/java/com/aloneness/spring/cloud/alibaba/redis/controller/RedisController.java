@@ -34,4 +34,9 @@ public class RedisController {
         }
         return null;
     }
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "hello";
+    }
 }

@@ -28,4 +28,9 @@ public class RedisServiceImpl implements IRedisService {
     public Object get(String key) {
         return redisTemplate.opsForValue().get(key);
     }
+
+    @Override
+    public Object getAll() {
+        return null;
+    }
 }
