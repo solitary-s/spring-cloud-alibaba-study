@@ -4,7 +4,6 @@
 #### 服务注册与发现 nacos
 - 下载安装 windows
 ```shell script
-# 切换 tag 1.2.1
 git clone https://github.com/alibaba/nacos.git
 
 # 编译 
@@ -20,7 +19,7 @@ sh startup.sh -m standalone
 bash startup.sh -m standalone
 
 # window
-点击startup.cmd
+startup.cmd -m standalone
 ```
 
 - 访问服务
@@ -30,7 +29,7 @@ bash startup.sh -m standalone
 #### 服务提供者 provider
 - @EnableDiscoveryClient表明是nacos的一个客户端，是spring cloud提供的原生注解
 - http://localhost:8680/hello/study 访问成功
-- nacos的服务列表出现该客户端
+- Nacos的服务列表出现该客户端
 
 #### 服务消费者 consumer
 - 使用feign作为服务间的通信
@@ -94,4 +93,5 @@ spring:
         dashboard: localhost:8080
 ```
 
-#### nacos config 统一的配置中心
+#### 使用API网关，Spring Cloud Gateway
+全局过滤器作用于所有的路由，不需要单独配置，我们可以用它来实现很多统一化处理的业务需求，比如权限认证，IP访问限制等等。

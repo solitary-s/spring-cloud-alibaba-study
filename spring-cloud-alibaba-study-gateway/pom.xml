@@ -17,6 +17,7 @@
 
     <dependencies>
         <!-- Spring Boot Begin -->
+        <!-- Gateway 项目已经依赖了 starter-webflux，所以这里 千万不要依赖 starter-web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -54,5 +55,17 @@
         </dependency>
         <!-- Commons Begin -->
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.aloneness.spring.cloud.study.gateway.GatewayApplication</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

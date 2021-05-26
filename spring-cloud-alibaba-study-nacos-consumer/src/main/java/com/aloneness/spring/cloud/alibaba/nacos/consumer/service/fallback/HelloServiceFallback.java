@@ -8,6 +8,6 @@ public class HelloServiceFallback implements HelloService {
 
     @Override
     public String hello(String message) {
-        return "Hello Fallback";
+        return "echo fallback";
     }
 }

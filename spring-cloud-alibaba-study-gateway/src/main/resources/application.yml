@@ -3,10 +3,10 @@ spring:
     # 应用名称
     name: spring-gateway
   cloud:
-    # 使用 Naoos 作为服务注册发现
+    # 使用Nacos作为服务注册发现
     nacos:
       discovery:
-        server-addr: 94.191.121.218:8848
+        server-addr: 127.0.0.1:8848
     # 路由网关配置
     gateway:
       # 设置与服务注册发现组件结合，这样可以采用服务名的路由策略
@@ -25,7 +25,7 @@ spring:
             - Method=GET,POST
 
 server:
-  port: 8785
+  port: 9000
 
 # 配置日志级别，方别调试
 logging:
