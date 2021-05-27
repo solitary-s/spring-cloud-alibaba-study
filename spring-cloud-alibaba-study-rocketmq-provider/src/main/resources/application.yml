@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: rocketmq-provider
+  cloud:
+    stream:
+      rocketmq:
+        binder:
+          name-server: 1.14.135.143:9876
+    bindings:
+      output:
+        destination: test-topic
+        content-type: application/json
+
+server:
+  port: 9093
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

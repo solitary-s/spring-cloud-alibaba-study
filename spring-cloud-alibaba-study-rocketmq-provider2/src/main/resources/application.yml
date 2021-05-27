@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: rocketmq-provider2
+
+server:
+  port: 9094
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
